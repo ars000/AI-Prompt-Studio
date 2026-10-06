@@ -4,19 +4,21 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#fca30c',
-          hover: '#e8920a',
-          muted: '#fca30c26',
+          DEFAULT: 'var(--color-primary)',
+          hover: 'var(--color-primary-hover)',
+          muted: 'var(--color-primary-muted)',
         },
         surface: {
-          DEFAULT: '#18181b',
-          elevated: '#27272a',
+          DEFAULT: 'var(--color-surface)',
+          elevated: 'var(--color-surface-elevated)',
         },
-        border: '#3f3f46',
+        border: 'var(--color-border)',
         text: {
-          DEFAULT: '#fafafa',
-          muted: '#a1a1aa',
+          DEFAULT: 'var(--color-text)',
+          muted: 'var(--color-text-muted)',
         },
+        'subtle-hover': 'var(--color-subtle-hover)',
+        scrim: 'var(--color-scrim)',
       },
     },
   },

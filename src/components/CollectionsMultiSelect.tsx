@@ -76,7 +76,7 @@ export function CollectionsMultiSelect({
               return (
                 <label
                   key={c.id}
-                  className="flex cursor-pointer items-center gap-2 px-3 py-2 text-sm hover:bg-white/5"
+                  className="flex cursor-pointer items-center gap-2 px-3 py-2 text-sm hover:bg-subtle-hover"
                 >
                   <input
                     type="checkbox"

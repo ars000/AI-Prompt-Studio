@@ -45,7 +45,7 @@ export function VersionsPanel({ versions, currentBody, onRestore }: Props) {
               type="button"
               onClick={() => setSelectedId(v.id)}
               className={`w-full rounded-lg px-3 py-2 text-left text-sm ${
-                selectedId === v.id ? 'bg-primary-muted text-primary' : 'hover:bg-white/5'
+                selectedId === v.id ? 'bg-primary-muted text-primary' : 'hover:bg-subtle-hover'
               }`}
             >
               <div className="font-medium">{v.label}</div>

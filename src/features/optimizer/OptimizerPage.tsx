@@ -379,7 +379,7 @@ export function OptimizerPage() {
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <Badge>{editable.kind}</Badge>
-            {usedMock && <Badge className="bg-zinc-700 text-text-muted">Mock / fallback</Badge>}
+            {usedMock && <Badge className="bg-surface-elevated text-text-muted border border-border">Mock / fallback</Badge>}
             {editable.kind === 'image' && imageTarget === 'custom' && imageNonEnglish && (
               <Badge className="bg-amber-600/20 text-amber-200 border border-amber-500/30">
                 Промпт не на EN — перевод перед генератором

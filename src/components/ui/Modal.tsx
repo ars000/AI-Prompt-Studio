@@ -25,7 +25,7 @@ export function Modal({ open, title, onClose, children, footer }: Props) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <button
         type="button"
-        className="absolute inset-0 bg-black/60"
+        className="absolute inset-0 bg-scrim"
         aria-label="Закрыть"
         onClick={onClose}
       />

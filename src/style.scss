@@ -1,5 +1,34 @@
-:root {
+:root,
+[data-theme='dark'] {
   color-scheme: dark;
+
+  --color-primary: #fca30c;
+  --color-primary-hover: #e8920a;
+  --color-primary-muted: #fca30c26;
+  --color-surface: #18181b;
+  --color-surface-elevated: #27272a;
+  --color-border: #3f3f46;
+  --color-text: #fafafa;
+  --color-text-muted: #a1a1aa;
+  --color-subtle-hover: rgb(255 255 255 / 0.05);
+  --color-scrim: rgb(0 0 0 / 0.6);
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --color-primary: #fca30c;
+  --color-primary-hover: #e8920a;
+  --color-primary-muted: #fca30c33;
+  --color-surface: #f4f4f5;
+  --color-surface-elevated: #ffffff;
+  --color-border: #d4d4d8;
+  --color-text: #18181b;
+  --color-text-muted: #71717a;
+  --color-subtle-hover: rgb(0 0 0 / 0.05);
+  --color-scrim: rgb(0 0 0 / 0.45);
+  --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%2371717a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 html {
@@ -13,6 +42,68 @@ html {
     color: var(--color-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+}
+
+.theme-switch {
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible .theme-switch__track {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  &__track {
+    position: relative;
+    display: block;
+    width: 2.5rem;
+    height: 1rem;
+    border-radius: 999px;
+    background: var(--color-border);
+    transition: background 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  &[aria-checked='true'] &__track {
+    background: var(--color-primary);
+  }
+
+  &__thumb {
+    position: absolute;
+    top: -0.25rem;
+    left: -0.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--color-surface-elevated);
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.28),
+      0 1px 3px rgb(0 0 0 / 0.12);
+    transition:
+      left 0.2s cubic-bezier(0.2, 0, 0, 1),
+      box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  &[aria-checked='true'] &__thumb {
+    left: calc(100% - 1.5rem);
+    box-shadow:
+      0 0 10px 1px color-mix(in srgb, var(--color-primary) 52%, transparent);
+  }
+
+  &:hover &__thumb,
+  &:active &__thumb {
+    box-shadow: 0 0 10px 3px color-mix(in srgb, var(--color-primary) 52%, transparent);
   }
 }
 
@@ -32,13 +123,10 @@ html {
   outline-offset: 2px;
 }
 
-// Единая «стрелка» селекта (как у нативного select в тёмной теме)
-$select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-
 select,
 .app-select-trigger {
   appearance: none;
-  background-image: $select-chevron;
+  background-image: var(--select-chevron);
   background-repeat: no-repeat;
   background-position: right 0.65rem center;
   background-size: 1rem;
