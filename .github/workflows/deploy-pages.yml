@@ -24,9 +24,8 @@ jobs:
           node-version: '20'
           cache: npm
       - run: npm ci
-      - run: npm run build
-        env:
-          VITE_BASE_PATH: /AI-Prompt-Studio/
+      # Относительный base — корень на custom domain (prompts.ars000.ru) и ./ на github.io/…/repo/
+      - run: npm run build:pages
       - name: SPA fallback for GitHub Pages
         run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3

@@ -9,8 +9,14 @@ import { GuidePage } from '../features/guide/GuidePage'
 import { OptimizerPage } from '../features/optimizer/OptimizerPage'
 import { NotFoundPage } from './NotFoundPage'
 
-const basename =
-  import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '')
+/** Корень на custom domain и при Vite base `./`; подпуть только если явно задан (legacy github.io). */
+function pagesBasename(): string | undefined {
+  const base = import.meta.env.BASE_URL
+  if (!base || base === '/' || base === './') return undefined
+  return base.replace(/\/$/, '')
+}
+
+const basename = pagesBasename()
 
 export const router = createBrowserRouter(
   [
