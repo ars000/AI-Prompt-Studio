@@ -37,25 +37,19 @@ npm test
 
 В **Настройках** или на вкладке **Тест** нажмите «Загрузить модели с API» — список подтягивается с OpenRouter/Groq по вашему ключу. OpenRouter: группы «Бесплатные / $0» и «Платные» по полю `pricing` и суффиксу `:free`. Groq: все модели из API помечены как free tier (лимиты по ключу).
 
-## Деплой на GitHub Pages
+## Git и публикация
 
-Репозиторий: **AI-Prompt-Studio**. После push в `main` workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) собирает приложение и публикует `dist/`.
+- Feature-ветки — без деплоя; **push в `main`** → [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) → [prompts.ars000.ru](https://prompts.ars000.ru).
+- Pages: **Settings → GitHub Actions**. Повтор деплоя: **Actions → Run workflow**.
 
-1. На GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. Push в ветку `main` (или **Actions → Deploy to GitHub Pages → Run workflow**).
-3. Сайт: `https://<ваш-логин>.github.io/AI-Prompt-Studio/`
-
-Локальная проверка сборки как на Pages:
+Проверка prod-сборки локально:
 
 ```bash
-set VITE_BASE_PATH=/AI-Prompt-Studio/
-npm run build
+npm run build:pages
 npm run preview
 ```
 
-Несуществующие маршруты внутри приложения показывают страницу **404**; для прямых ссылок на GitHub Pages в артефакт копируется `404.html` (тот же SPA, что и `index.html`).
-
-Альтернатива: `npm run build` без `VITE_BASE_PATH` и выкладка `dist/` на Vercel / Netlify (корневой домен, `base` не нужен).
+Для прямых URL на Pages в артефакт копируется `404.html` (SPA fallback).
 
 ## Брендинг
 

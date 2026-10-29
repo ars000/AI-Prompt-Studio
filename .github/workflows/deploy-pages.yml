@@ -1,3 +1,4 @@
+# Прод только с main. Feature-ветки не деплоятся. Pages: Settings → GitHub Actions.
 name: Deploy to GitHub Pages
 
 on:
